@@ -4,16 +4,16 @@ var fs = require('fs');
 var path = require('path');
 var qs = require('querystring');
 var sanitizeHtml = require('sanitize-html');
+var compression = require('compression');
 var template = require('./lib/template.js');
-var bodyParser = require('body-parser');
+const { request } = require('http');
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false }));
+app.use(compression());
 
-//route, routing
-//app.get('/', (req, res) => res.send('Hello World!'))
 app.get('/', function(request, response) { 
   fs.readdir('./data', function(error, filelist){
-    var title = 'Welcome';
+    var title = 'WELCOME HYEONG DAL';
     var description = 'Hello, Node.js';
     var list = template.list(filelist);
     var html = template.HTML(title, list,
@@ -67,22 +67,16 @@ app.get('/create', function(request, response){
   });
 });
  
-app.post('/create_process', function(request, response){``
-  var body = '';
-  request.on('data', function(data){
-      body = body + data;
-  });
-  request.on('end', function(){
-      var post = qs.parse(body);
+app.post('/create_process', function(request, response){
+      var post = request.body;
       var title = post.title;
       var description = post.description;
       fs.writeFile(`data/${title}`, description, 'utf8', function(err){
         response.writeHead(302, {Location: `/?id=${title}`});
         response.end();
-      })
+    });
   });
-});
- 
+
 app.get('/update/:pageId', function(request, response){
   fs.readdir('./data', function(error, filelist){
     var filteredId = path.parse(request.params.pageId).base;
@@ -110,12 +104,7 @@ app.get('/update/:pageId', function(request, response){
 });
  
 app.post('/update_process', function(request, response){
-  var body = '';
-  request.on('data', function(data){
-      body = body + data;
-  });
-  request.on('end', function(){
-      var post = qs.parse(body);
+      var post = request.body;
       var id = post.id;
       var title = post.title;
       var description = post.description;
@@ -125,22 +114,17 @@ app.post('/update_process', function(request, response){
         })
       });
   });
-});
- 
+
 app.post('/delete_process', function(request, response){
-  var body = '';
-  request.on('data', function(data){
-      body = body + data;
-  });
-  request.on('end', function(){
-      var post = qs.parse(body);
+
+      var post = request.body;
       var id = post.id;
       var filteredId = path.parse(id).base;
       fs.unlink(`data/${filteredId}`, function(error){
         response.redirect('/');
       })
   });
-});
+
  
 app.listen(3000, function() {
   console.log('Example app listening on port 3000!')
