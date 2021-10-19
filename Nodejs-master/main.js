@@ -8,6 +8,7 @@ var compression = require('compression');
 var template = require('./lib/template.js');
 const { request } = require('http');
 
+app.use(express.static('../public'));
 app.use(express.urlencoded({ extended: false }));
 app.use(compression());
 
@@ -17,7 +18,9 @@ app.get('/', function(request, response) {
     var description = 'Hello, Node.js';
     var list = template.list(filelist);
     var html = template.HTML(title, list,
-      `<h2>${title}</h2>${description}`,
+      `<h2>${title}</h2>${description}
+      <img src="/images/Hello.jpg" style="width:400px; display:block; margin-top:15px;">
+      `,
       `<a href="/create">create</a>`
     ); 
     response.send(html);
