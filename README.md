@@ -1,6 +1,7 @@
 ## WEB3_Nodejs_Express_Egoing
 
 - 애플리케이션 레벨 미들에어 
+
         app.use() 및 app.METHOD() 함수를 이용해 애플리케이션 미들웨어를 앱 오브젝트의 인스턴스에 바인드하십시오.
 
         이때 METHOD는 미들웨어 함수가 처리하는 요청(GET, PUT 또는 POST 등)의 소문자로 된 HTTP 메소드입니다.
