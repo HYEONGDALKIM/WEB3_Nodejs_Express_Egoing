@@ -42,6 +42,33 @@
      - 주소체계 변경
          - 간단한 소프트웨어라도 하나의 수정에 전체코드에 많은 수정이 필요함
 
-
      - 라우터 
          - 파일로 분리 topic.js
+
+     - 여러가지 단골 보안 이슈들을 해결해줌
+       - helmet
+
+       - npm install --save helmet
+
+     - express Generator 
+
+        -Express 기반의 프로젝트를 할 때 기본적으로 필요한 파일과 코드를 
+
+         자동으로 만들어주는 앱인 Express generator를 소개합니다. 
+
+ 
+     - 데이터베이스 통합
+        데이터베이스를 Express 앱에 연결하는 기능을 추가하려면 앱에 포함된 데이터베이스를 위한 적절한 Node.js 드라이버를 로드해야 합니다. 이 문서에서는 Express 앱의 데이터베이스 시스템에 가장 널리 이용되고 있는 Node.js 모듈 중 다음과 같은 몇 개의 모듈을 추가 및 사용하는 방법을 설명합니다.
+
+                Cassandra
+                CouchDB
+                LevelDB
+                MySQL
+                MongoDB
+                Neo4j
+                PostgreSQL
+                Redis
+                SQLite
+                ElasticSearch
+
+        - 적은 노동 >> 많은 효율 
