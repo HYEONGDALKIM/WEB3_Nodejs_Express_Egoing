@@ -52,6 +52,8 @@
 
      - express Generator 
 
+        - https://www.inflearn.com/course/node-js-express/lecture/13898?tab=curriculum
+
         -Express 기반의 프로젝트를 할 때 기본적으로 필요한 파일과 코드를 
 
          자동으로 만들어주는 앱인 Express generator를 소개합니다. 
