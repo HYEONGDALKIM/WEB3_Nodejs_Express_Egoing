@@ -33,7 +33,7 @@
           res.status(404).send('404! not fount');
           });
         - 오류 호출 할때 인자를 err로 주고
-        - app.use(function (err, req, res, next) {
+        - app.use(function (err, req,  res, next) {
           console.error(err.stack)
           res.status(500).send('500! Not found page')
           }); 
